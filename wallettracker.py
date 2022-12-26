@@ -7,12 +7,12 @@ import logging
 from lightbulb.ext import tasks
 import datetime
 import string
-from discord_keys import wt_jarpix
+from discord_keys import wt_wallettracker
 
 logging.getLogger("requests").setLevel(logging.WARNING)
 logging.getLogger("requests.packages.urllib3").setLevel(logging.CRITICAL)
 
-token = wt_jarpix
+token = wt_wallettracker
 bot = lightbulb.BotApp(token=token)
 channel_id = 1017070434707058709
 times= datetime.datetime.now()
@@ -22,7 +22,7 @@ tasks.load(bot)
 
 
 buffer_lst = ["yo"]
-wallet_address="GhgXZXoicav7d7f3skQH6NBiw6HeNZ2MFPx9j61UJvW6"
+wallet_address="{any wallet address}"
 
 @tasks.task(s=10, auto_start=True)
 async def tracker():
@@ -49,15 +49,15 @@ async def tracker():
                         response3 = request("GET", url3)
                         data3 = response3.json()
                         fp = data3['floorPrice']
-                        title = f'Jarpix {action}ed {name}'
+                        title = f'{person-to-track}{action}ed {name}'
                         description = f"**Price** \u3000\u3000\u3000 **Floor Price** \n {price} ◎ \u3000 \u3000 {(fp/1000000000)}◎"
                         color = "#9f40ff"
                         if "buyNow" in data[0]['type']:
                             if data[0]["buyer"]== wallet_address:
-                                title =f"Jarpix bought {name}"
+                                title =f"{person-to-track} bought {name}"
                                 color ="#66FF00"
                             elif data[0]["seller"]== wallet_address:
-                                title =f"Jarpix sold {name}"
+                                title =f"{person-to-track} sold {name}"
                                 color ="#FF0000"
                         embed = hikari.Embed(title=title,
                                              url=f"https://magiceden.io/item-details/{tokenMint}",
