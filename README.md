@@ -4,7 +4,7 @@ This wallettracker.py is a simple python program to track wallets from Solana bl
 The tracker tracks the wallets NFT purchases and sends the results in discord using a bot.
 
 
-The program uses the marketplace *Magic Eden* API and fetches the results and then uses the Hikari module for the discord bot
+The program uses the marketplace **Magic Eden** API and fetches the results and then uses the Hikari module for the discord bot
 
 
 Setting up:
